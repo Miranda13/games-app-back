@@ -1,6 +1,6 @@
-import { Location } from "../../interfaces/locations.interface";
-import { pool } from "../db";
-import { ILocation } from "../models/location.model";
+import { Location } from '../../interfaces/locations.interface'
+import { pool } from '../db'
+import { ILocation } from '../models/location.model'
 
 interface SearchParams {
   name_stadium?: string;
@@ -20,8 +20,8 @@ async function insertLocation(location: Location) {
 }
 
 async function getAllLocations(searchParams?: SearchParams): Promise<ILocation[]> {
-  let query: string = `SELECT * FROM locations`;
-  let condition: string = ``;
+  let query: string = `SELECT * FROM locations`
+  let condition: string = ``
 
   if (searchParams?.name_stadium && searchParams?.city) {
     condition += `name_stadium = '${searchParams.name_stadium}' AND city = '${searchParams.city}'`
@@ -47,8 +47,8 @@ async function getAllLocations(searchParams?: SearchParams): Promise<ILocation[]
       else {
         resolve(res.rows)
       }
-    });
-  });
+    })
+  })
 }
 
 async function getLocationById(id: number): Promise<ILocation> {

@@ -1,5 +1,3 @@
-import { Request } from 'express'
-
 import { ServiceAPIResponse } from '../../interfaces/service-response.interface'
 import { Location } from '../../interfaces/locations.interface'
 import { deleteLocationById, getAllLocations, getLocationById, insertLocation, updateLocationById } from '../repositories/locations.rep'
@@ -24,7 +22,7 @@ const getById = async (id: number): Promise<ServiceAPIResponse<ILocation>> => {
       request:{ 
         status: 404,
         error: {
-          message: "Not found"
+          message: 'Not found'
         }
       }
     }
@@ -47,7 +45,7 @@ const createLocation = async (location: Location): Promise<ServiceAPIResponse<nu
       request:{ 
         status: 400,
         error: {
-          message: "Bad types sent"
+          message: 'Bad types sent'
         }
       }
     }
@@ -68,7 +66,7 @@ const updateLocation = async (location: Location, id: number): Promise<ServiceAP
       request:{ 
         status: 404,
         error: {
-          message: "Resource not found"
+          message: 'Resource not found'
         }
       }
     }
@@ -89,7 +87,7 @@ const deleteLocation = async (id: number): Promise<ServiceAPIResponse<Location>>
       request:{ 
         status: 404,
         error: {
-          message: "Resource not found"
+          message: 'Resource not found'
         }
       }
     }

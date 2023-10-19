@@ -8,7 +8,7 @@ const createTeam = async (req: Request, res: Response) => {
     const { name, url_flag_image } = req.body
 
     if ( !name || !url_flag_image ) {
-      return res.status(400).send("Parameters bad configurated")
+      return res.status(400).send('Parameters bad configurated')
     }
 
     const newTeam: Team = {
@@ -29,7 +29,7 @@ const deleteTeam = async (req: Request, res: Response) => {
     const idTeam: number = +req.params?.id
     
     if (!idTeam) {
-      return res.status(400).send("Bad request")
+      return res.status(400).send('Bad request')
     }
 
     const dataResponse = await teamsService.deleteTeam(idTeam)
@@ -55,7 +55,7 @@ const getById = async (req: Request, res: Response) => {
   const idTeam: number = +req.params?.id
     
   if (!idTeam) {
-    return res.status(400).send("Bad request")
+    return res.status(400).send('Bad request')
   }
 
   try {
@@ -73,11 +73,11 @@ const updateTeam = async (req: Request, res: Response) => {
     const idTeam: number = +req.params?.id
     
     if (!idTeam) {
-      return res.status(400).send("Bad request")
+      return res.status(400).send('Bad request')
     }
 
     if (!name || !url_flag_image) {
-      return res.status(400).send("Parameters bad configurated")
+      return res.status(400).send('Parameters bad configurated')
     }
 
     const newTeam: Team = {

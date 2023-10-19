@@ -1,6 +1,6 @@
-import { Team } from "../../interfaces/teams.interface";
-import { pool } from "../db";
-import { ITeam } from "../models/team.model";
+import { Team } from '../../interfaces/teams.interface'
+import { pool } from '../db'
+import { ITeam } from '../models/team.model'
 
 interface SearchParams {
   name?: string;
@@ -19,8 +19,8 @@ async function insertTeam(team: Team) {
 }
 
 async function getAllTeams(searchParams?: SearchParams): Promise<ITeam[]> {
-  let query: string = `SELECT * FROM teams`;
-  let condition: string = ``;
+  let query: string = `SELECT * FROM teams`
+  let condition: string = ``
 
   if (searchParams?.name) {
     condition += `name = '${searchParams.name}'`
@@ -38,8 +38,8 @@ async function getAllTeams(searchParams?: SearchParams): Promise<ITeam[]> {
       else {
         resolve(res.rows)
       }
-    });
-  });
+    })
+  })
 }
 
 async function getTeamById(id: number): Promise<ITeam> {

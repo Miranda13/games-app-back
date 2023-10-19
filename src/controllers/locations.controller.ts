@@ -8,7 +8,7 @@ const createLocation = async (req: Request, res: Response) => {
     const { name_stadium, city } = req.body
 
     if ( !name_stadium || !city ) {
-      return res.status(400).send("Parameters bad configurated")
+      return res.status(400).send('Parameters bad configurated')
     }
 
     const newLocation: Location = {
@@ -29,7 +29,7 @@ const deleteLocation = async (req: Request, res: Response) => {
     const idLocation: number = +req.params?.id
     
     if (!idLocation) {
-      return res.status(400).send("Bad request")
+      return res.status(400).send('Bad request')
     }
 
     const dataResponse = await locationsService.deleteLocation(idLocation)
@@ -55,7 +55,7 @@ const getById = async (req: Request, res: Response) => {
   const idLocation: number = +req.params?.id
     
   if (!idLocation) {
-    return res.status(400).send("Bad request")
+    return res.status(400).send('Bad request')
   }
 
   try {
@@ -73,11 +73,11 @@ const updateLocation = async (req: Request, res: Response) => {
     const idLocation: number = +req.params?.id
     
     if (!idLocation) {
-      return res.status(400).send("Bad request")
+      return res.status(400).send('Bad request')
     }
 
     if (!name_stadium || !city) {
-      return res.status(400).send("Parameters bad configurated")
+      return res.status(400).send('Parameters bad configurated')
     }
 
     const newLocation: Location = {

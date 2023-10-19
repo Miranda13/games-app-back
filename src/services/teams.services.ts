@@ -24,7 +24,7 @@ const getById = async (id: number): Promise<ServiceAPIResponse<ITeam>> => {
       request:{ 
         status: 404,
         error: {
-          message: "Not found"
+          message: 'Not found'
         }
       }
     }
@@ -47,7 +47,7 @@ const createTeam = async (team: Team): Promise<ServiceAPIResponse<number>> => {
       request:{ 
         status: 400,
         error: {
-          message: "Bad types sent"
+          message: 'Bad types sent'
         }
       }
     }
@@ -68,7 +68,7 @@ const updateTeam = async (team: Team, id: number): Promise<ServiceAPIResponse<nu
       request:{ 
         status: 404,
         error: {
-          message: "Resource not found"
+          message: 'Resource not found'
         }
       }
     }
@@ -89,7 +89,7 @@ const deleteTeam = async (id: number): Promise<ServiceAPIResponse<Team>> => {
       request:{ 
         status: 404,
         error: {
-          message: "Resource not found"
+          message: 'Resource not found'
         }
       }
     }
