@@ -1,5 +1,3 @@
-import { Request } from 'express'
-
 import { ServiceAPIResponse } from '../../interfaces/service-response.interface'
 import { Team } from '../../interfaces/teams.interface'
 import { deleteTeamById, getAllTeams, getTeamById, insertTeam, updateTeamById } from '../repositories/teams.rep'

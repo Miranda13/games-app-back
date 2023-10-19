@@ -1,5 +1,5 @@
 interface ILocation {
-  team_id: number;
+  location_id: number;
   name_stadium: string;
   city: string;
 }

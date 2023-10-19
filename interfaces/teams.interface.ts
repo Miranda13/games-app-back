@@ -1,7 +1,12 @@
 interface Team {
   name: string;
   url_flag_image: string;
-  score?: number;
 }
 
-export { Team }
+interface GTeam {
+  team_id: number;
+  score: number;
+  score_id?: number; 
+}
+
+export { Team, GTeam }

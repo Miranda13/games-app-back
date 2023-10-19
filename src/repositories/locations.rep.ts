@@ -11,12 +11,12 @@ async function insertLocation(location: Location) {
   const query = `
     INSERT INTO locations (city, name_stadium, active)
     VALUES ($1, $2, $3)
-    RETURNING id
+    RETURNING location_id
   `
   const values = [location.city, location.name_stadium, true]
   const result = await pool.query(query, values)
 
-  return result.rows[0].id
+  return result.rows[0].location_id
 }
 
 async function getAllLocations(searchParams?: SearchParams): Promise<ILocation[]> {
@@ -54,7 +54,7 @@ async function getAllLocations(searchParams?: SearchParams): Promise<ILocation[]
 async function getLocationById(id: number): Promise<ILocation> {
   let query: string = `
     SELECT * FROM locations
-    WHERE id = $1`
+    WHERE location_id = $1`
 
   const result = await pool.query(query, [id])
   
@@ -65,7 +65,7 @@ async function updateLocationById(location: Location, id: number): Promise<numbe
   const query = `
     UPDATE locations
     SET city = $1, name_stadium = $2
-    WHERE id = $3
+    WHERE location_id = $3
   `
   const values = [location.city, location.name_stadium, id]
   const result = await pool.query(query, values)
@@ -76,7 +76,7 @@ async function updateLocationById(location: Location, id: number): Promise<numbe
 async function deleteLocationById(id: number): Promise<number> {
   const query = `
     DELETE FROM locations
-    WHERE id = $1
+    WHERE location_id = $1
   `
   const result = await pool.query(query, [id])
 

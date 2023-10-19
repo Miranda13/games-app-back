@@ -10,12 +10,12 @@ async function insertTeam(team: Team) {
   const query = `
     INSERT INTO teams (name, url_flag_image)
     VALUES ($1, $2)
-    RETURNING id
+    RETURNING team_id
   `
   const values = [team.name, team.url_flag_image]
   const result = await pool.query(query, values)
 
-  return result.rows[0].id
+  return result.rows[0].team_id
 }
 
 async function getAllTeams(searchParams?: SearchParams): Promise<ITeam[]> {
@@ -45,7 +45,7 @@ async function getAllTeams(searchParams?: SearchParams): Promise<ITeam[]> {
 async function getTeamById(id: number): Promise<ITeam> {
   let query: string = `
     SELECT * FROM teams
-    WHERE id = $1`
+    WHERE team_id = $1`
 
   const result = await pool.query(query, [id])
   
@@ -56,7 +56,7 @@ async function updateTeamById(team: Team, id: number): Promise<number> {
   const query = `
     UPDATE teams
     SET name = $1, url_flag_image = $2
-    WHERE id = $3
+    WHERE team_id = $3
   `
   const values = [team.name, team.url_flag_image, id]
   const result = await pool.query(query, values)
@@ -67,7 +67,7 @@ async function updateTeamById(team: Team, id: number): Promise<number> {
 async function deleteTeamById(id: number): Promise<number> {
   const query = `
     DELETE FROM teams
-    WHERE id = $1
+    WHERE team_id = $1
   `
   const result = await pool.query(query, [id])
 

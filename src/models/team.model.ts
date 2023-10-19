@@ -3,6 +3,7 @@ interface ITeam {
   name: string;
   url_flag_image: string;
   score?: number;
+  score_id?: number;
 }
 
 export { ITeam }
