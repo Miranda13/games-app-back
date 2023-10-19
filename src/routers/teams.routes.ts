@@ -2,16 +2,16 @@ import express from 'express'
 
 import * as teamsController from '../controllers/teams.controller'
 
-const router = express.Router()
+const routerTeams = express.Router()
 
-router.get('/', teamsController.getAll)
+routerTeams.get('/', teamsController.getAll)
 
-router.get('/:id', teamsController.getById)
+routerTeams.get('/:id', teamsController.getById)
 
-router.post('/', teamsController.createTeam)
+routerTeams.post('/', teamsController.createTeam)
 
-router.delete('/:id', teamsController.deleteTeam)
+routerTeams.delete('/:id', teamsController.deleteTeam)
 
-router.put('/:id', teamsController.updateTeam)
+routerTeams.put('/:id', teamsController.updateTeam)
 
-export { router as default }
+export { routerTeams as default }

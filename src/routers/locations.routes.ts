@@ -2,16 +2,16 @@ import express from 'express'
 
 import * as locationsController from '../controllers/locations.controller'
 
-const router = express.Router()
+const routerLocations = express.Router()
 
-router.get('/', locationsController.getAll)
+routerLocations.get('/', locationsController.getAll)
 
-router.get('/:id', locationsController.getById)
+routerLocations.get('/:id', locationsController.getById)
 
-router.post('/', locationsController.createLocation)
+routerLocations.post('/', locationsController.createLocation)
 
-router.delete('/:id', locationsController.deleteLocation)
+routerLocations.delete('/:id', locationsController.deleteLocation)
 
-router.put('/:id', locationsController.updateLocation)
+routerLocations.put('/:id', locationsController.updateLocation)
 
-export { router as default }
+export { routerLocations as default }

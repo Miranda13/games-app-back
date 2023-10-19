@@ -2,9 +2,9 @@ import express, { Express } from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 
-import gamesRoutes from './routers/games.routes'
-import locationsRoutes from './routers/locations.routes'
-import teamsRoutes from './routers/teams.routes'
+import * as middleware from './middlewares'
+
+import { routerTeams, routerLocations, routerGames} from './routers'
 
 const PORT = process.env.PORT || 8080
 const ENV = process.env.NODE_ENV || 'production'
@@ -15,9 +15,13 @@ app.use(cors())
 
 app.use(express.json())
 
-app.use('/games', gamesRoutes)
-app.use('/locations', locationsRoutes)
-app.use('/teams', teamsRoutes)
+app.use('/games', routerGames)
+app.use('/locations', routerLocations)
+app.use('/teams', routerTeams)
+
+app.use(middleware.errorHandler)
+
+app.use(middleware.notFoundHandler)
 
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT} in ${ENV} environment`)
