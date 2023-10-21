@@ -20,7 +20,7 @@ async function insertGame(game: Game) {
 
 async function getAllGames(searchParams?: SearchParams): Promise<QGame[]> {
   let query: string = `
-    SELECT gm.game_id, gm.hour, gm.date, gm.played,
+    SELECT gm.game_id, gm.hour, TO_CHAR(gm.date, 'Mon DD YYYY') as date, gm.played,
     lc.location_id, lc.name_stadium, lc.city,
     tm.name, tm.url_flag_image, tm.team_id,
     sc.score, sc.score_id
@@ -55,7 +55,7 @@ async function getAllGames(searchParams?: SearchParams): Promise<QGame[]> {
 
 async function getGameById(id: number): Promise<QGame[]> {
   let query: string = `
-    SELECT gm.game_id, gm.hour, gm.date, gm.played,
+    SELECT gm.game_id, gm.hour, TO_CHAR(gm.date, 'Mon DD YYYY') as date, gm.played,
     lc.location_id, lc.name_stadium, lc.city,
     tm.name, tm.url_flag_image, tm.team_id,
     sc.score, sc.score_id
