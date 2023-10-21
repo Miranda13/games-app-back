@@ -151,6 +151,9 @@ const updateGame = async (game: Game, id: number): Promise<ServiceAPIResponse<nu
   if(game.teams[0].score_id) {
     game.teams[0].score_id = Number(game.teams[0].score_id)
   }
+  if(game.teams[1].score_id) {
+    game.teams[1].score_id = Number(game.teams[1].score_id)
+  }
 
   if(!game.location_id || isNaN(game.teams[0].score) || isNaN(game.teams[1].score) || 
     !game.teams[0].team_id || !game.teams[1].team_id ) {
