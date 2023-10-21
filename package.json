@@ -5,6 +5,7 @@
   "main": "dist/src/index.js",
   "scripts": {
     "start": "node dist/src/index.js",
+    "build": "npm run lint && tsc",
     "dev": "concurrently -k \"tsc -w\" \"nodemon dist/src/index.js\"",
     "test": "error",
     "lint": "eslint **/*.ts"
