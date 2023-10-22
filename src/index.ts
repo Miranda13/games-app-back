@@ -4,7 +4,7 @@ import 'dotenv/config'
 
 import * as middleware from './middlewares'
 
-import { routerTeams, routerLocations, routerGames} from './routers'
+import { routerTeams, routerLocations, routerGames, routerHealth} from './routers'
 
 const PORT = process.env.PORT || 8080
 const ENV = process.env.NODE_ENV || 'production'
@@ -18,6 +18,7 @@ app.use(express.json())
 app.use('/games', routerGames)
 app.use('/locations', routerLocations)
 app.use('/teams', routerTeams)
+app.use('/health', routerHealth)
 
 app.use(middleware.errorHandler)
 
