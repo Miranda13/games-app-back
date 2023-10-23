@@ -4,13 +4,21 @@ This project is designed for the management of football games. It offers three e
 
 You can access pre-existing data for locations and teams to create new games. When a new game is created, two default scores are generated, one for each team. Deleting a location or team triggers a cascade delete action.
 
+DER diagram:
 
+![appgamesder drawio](https://github.com/Miranda13/games-app-back/assets/13924267/2d58706c-dc0d-4092-b4e3-6cd48674e4cd)
+
+It's deployed in render.com, for this reason if you make a request you have to wait 5 - 10 minutes while the service is available, it works automatically. 
+
+Each service is deployed independently, including both the database and the backend, and can be found at this URL: https://games-app-5o2l.onrender.com.
+
+Documentation https://games-app-5o2l.onrender.com/api-docs
 
 ## Prerequisite
 - Node 18.17.1
 - PostgreSQL
 
-## Getting started
+## Getting started for local work
 - Clone the repository
 ```
 git clone git@github.com:Miranda13/games-app-back.git
