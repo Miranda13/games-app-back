@@ -1,7 +1,39 @@
+/**
+ * @swagger
+ * tags:
+ *   - name: Teams
+ *     description: Team management endpoints
+ */
+
 import { Request, Response } from 'express'
 
 import * as teamsService from '../services/teams.services'
 import { Team } from '../../interfaces/teams.interface'
+
+/**
+ * @swagger
+ * /teams:
+ *   post:
+ *     summary: Create a new team.
+ *     tags: 
+ *       - Teams
+ *     parameters:
+ *       - in: body
+ *         name: team
+ *         description: Data of the team to be created.
+ *         schema:
+ *           type: object
+ *           properties:
+ *             name:
+ *               type: string
+ *               description: Team name.
+ *             url_flag_image:
+ *               type: string
+ *               description: URL of the team's flag image.
+ *     responses:
+ *       200:
+ *         description: Team created successfully.
+ */
 
 const createTeam = async (req: Request, res: Response) => {
   try {
@@ -24,6 +56,24 @@ const createTeam = async (req: Request, res: Response) => {
   }
 }
 
+/**
+ * @swagger
+ * /teams/{id}:
+ *   delete:
+ *     summary: Delete a team by its ID.
+ *     tags: 
+ *       - Teams
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: ID of the team to be deleted.
+ *         required: true
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: Team deleted successfully.
+ */
+
 const deleteTeam = async (req: Request, res: Response) => {
   try {
     const idTeam: number = +req.params?.id
@@ -41,6 +91,18 @@ const deleteTeam = async (req: Request, res: Response) => {
   }
 }
 
+/**
+ * @swagger
+ * /teams:
+ *   get:
+ *     summary: Get the list of teams.
+ *     tags: 
+ *       - Teams
+ *     responses:
+ *       200:
+ *         description: List of teams obtained successfully.
+ */
+
 const getAll = async (req: Request, res: Response) => {
   try {
     const dataResponse = await teamsService.getAll()
@@ -50,6 +112,24 @@ const getAll = async (req: Request, res: Response) => {
     res.status(500).send(e.message)
   }
 }
+
+/**
+ * @swagger
+ * /teams/{id}:
+ *   get:
+ *     summary: Get a team by its ID.
+ *     tags: 
+ *       - Teams
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: ID of the team to be obtained.
+ *         required: true
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: Team obtained successfully.
+ */
 
 const getById = async (req: Request, res: Response) => {
   const idTeam: number = +req.params?.id
@@ -66,6 +146,36 @@ const getById = async (req: Request, res: Response) => {
     res.status(500).send(e.message)
   }
 }
+
+/**
+ * @swagger
+ * /teams/{id}:
+ *   put:
+ *     summary: Update a team by its ID.
+ *     tags: 
+ *       - Teams
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: ID of the team to be updated.
+ *         required: true
+ *         type: number
+ *       - in: body
+ *         name: team
+ *         description: Data of the updated team.
+ *         schema:
+ *           type: object
+ *           properties:
+ *             name:
+ *               type: string
+ *               description: Team name.
+ *             url_flag_image:
+ *               type: string
+ *               description: URL of the team's flag image.
+ *     responses:
+ *       200:
+ *         description: Team updated successfully.
+ */
 
 const updateTeam = async (req: Request, res: Response) => {
   try {
